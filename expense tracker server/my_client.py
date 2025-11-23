@@ -6,6 +6,6 @@ client = Client("http://localhost:8000/mcp")
 async def call_tool(name: str):
     async with client:
         result = await client.call_tool("greet", {"name": name})
-        print(result)
+        print(result.content)
 
 asyncio.run(call_tool("Pranto"))
