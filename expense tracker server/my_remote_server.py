@@ -38,6 +38,7 @@ def init_db():  # Keep as sync for initialization
 # Initialize database synchronously at module load
 init_db()
 
+
 @mcp.tool()
 async def add_expense(date, amount, category, subcategory="", note=""):  # Changed: added async
     '''Add a new expense entry to the database.'''
@@ -97,6 +98,7 @@ async def summarize(start_date, end_date, category=None):  # Changed: added asyn
             return [dict(zip(cols, r)) for r in await cur.fetchall()]  # Changed: added await
     except Exception as e:
         return {"status": "error", "message": f"Error summarizing expenses: {str(e)}"}
+
 
 @mcp.resource("expense:///categories", mime_type="application/json")  # Changed: expense:// → expense:///
 def categories():
